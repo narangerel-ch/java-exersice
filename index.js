@@ -354,25 +354,56 @@ if (hour === 0) {
 // Variables: weight (kg), isExpress (boolean), isMember (boolean).
 // Base: weight <= 1 -> $5, weight <= 5 -> $10, otherwise -> $20.
 // If isExpress, double base. Then if isMember, take $3 off (never below $0). Log final cost.
-let ppWeight = 8;
+let ppWeight = 0.9;
 let isExpress = true;
 let ppMember = true;
 if (ppWeight <= 1) {
-  console.log($5);
-  ppWeight <= 5;
-  console.log($10);
+  cost = 5;
+} else if (ppWeight <= 5) {
+  cost = 10;
 } else {
-  console.log($20);
+  cost = 20;
 }
+if (isExpress) {
+  cost *= 2;
+}
+if (isMember) {
+  cost -= 3;
+}
+if (cost < 0) {
+  cost = 0;
+}
+console.log("Final cost:", cost);
 
 // ----- 17. Progressive tax -----
 // Variable: income. first $10,000 -> 0%, $10,001–$30,000 -> 10% on that portion,
 // above $30,000 -> 20% on that portion. Log total tax. Test with 5000, 20000, 50000.
+let income = 49000;
+if (income <= 10000) {
+  tax = income * 0;
+} else if (income > 10001 && income <= 30000) {
+  tax = income * 0.1;
+} else {
+  tax = income * 0.2;
+}
+console.log("Total tax", tax);
 
 // ----- 18. Password validator -----
 // Variables: password (string), confirmPassword (string). Log "Valid" only when ALL true:
 //   length >= 8, NOT equal to "password", AND matches confirmPassword.
 // Otherwise a specific reason: "Too short", "Too common", or "Does not match" (in that order).
+let inPassword = "ppppllllkkkmmmjj";
+let confirmPassword = "ppppllllkkkmmmjj";
+
+if (inPassword.length <= 8) {
+  console.log("Too short");
+} else if (inPassword === "inPassword") {
+  console.log("Too common");
+} else if (inPassword !== confirmPassword) {
+  console.log("Does not match");
+} else {
+  console.log("Valid");
+}
 
 // ----- 19. Concert pricing -----
 // Variables: age, day (string), hasVipCode (boolean). Start price $50.
