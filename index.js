@@ -861,6 +861,9 @@ console.log("Found it:" + secretNum);
 // Loop with spellWord[i] and log one letter per line.
 
 let spellWord = "hello";
+for (let i = 0; i <= spellWord.length; i++) {
+  console.log(spellWord[i]);
+}
 
 // your code here
 
@@ -874,7 +877,12 @@ let spellWord = "hello";
 
 // Count how many times "a" appears in letterWord (if letterWord[i] === "a"). Log the count.
 
-let letterWord = "banana";
+let letterWord = "aaa";
+letterWordI = 0;
+for (let i = 0; i <= letterWord.length; i++) {
+  if (letterWord[i] === "a") letterWordI++;
+  console.log(letterWordI);
+}
 
 // your code here
 
@@ -888,7 +896,13 @@ let letterWord = "banana";
 
 // For each char, if "aeiou".includes(vowelText[i]) add to a counter. Log the count.
 
-let vowelText = "javascript";
+let vowelText = "javascrpt";
+let Vowels = "aeiou";
+let vowelcount = 0;
+for (i = 0; i <= vowelText.length; i++) {
+  if (Vowels.includes(vowelText[i])) vowelcount++;
+  console.log(vowelcount);
+}
 
 // your code here
 
@@ -902,7 +916,12 @@ let vowelText = "javascript";
 
 // reversedText = "". Loop and build backwards: reversedText = reverseWord[i] + reversedText. Log it.
 
-let reverseWord = "code";
+let reverseWord = "book";
+let reversedText = "";
+for (let i = 0; i < reverseWord.length; i++) {
+  reversedText = reverseWord[i] + reversedText;
+}
+console.log(reversedText);
 
 // your code here
 
@@ -916,7 +935,14 @@ let reverseWord = "code";
 
 // wordCount = 1. Each space (wordSentence[i] === " ") -> wordCount++. Log the count.
 
-let wordSentence = "the cat sat down";
+let wordSentence = "the cat sat down helloo world";
+let wordCount = 1;
+for (let i = 0; i < wordSentence.length; i++) {
+  if (wordSentence[i] === " ") {
+    wordCount++;
+  }
+}
+console.log(wordCount);
 
 // your code here
 
@@ -932,14 +958,25 @@ let wordSentence = "the cat sat down";
 
    ============================================================ */
 
-// ----- 18. Find first digit in text -----
+// ----- 18. Find first digit(цифр)) in text -----
 
 // Loop digitText chars. When !isNaN(Number(digitText[i])) -> log "First digit: " + char and break.
 
 // If none found, log "No digits".
 
-let digitText = "abc4def";
+let digitText = "abfujg9de";
+let found = false;
 
+for (let i = 0; i < digitText.length; i++) {
+  if (!isNaN(Number(digitText[i]))) {
+    console.log("First digit: " + digitText[i]);
+    found = true;
+    break;
+  }
+}
+if (found === false) {
+  console.log("No digits");
+}
 // your code here
 
 // TEST 1:  digitText = "abc4def"  ->  First digit: 4
@@ -953,6 +990,18 @@ let digitText = "abc4def";
 // Loop i from 2 to primeN-1. If primeN % i === 0 -> not prime, break. Log "Prime"/"Not prime".
 
 let primeN = 13;
+let count2 = 0;
+for (let j = 2; j <= primeN - 1; j += 1) {
+  if (primeN % j === 0) {
+    console.log("not prime");
+    break;
+  } else {
+    count2++;
+  }
+}
+if (count2 === primeN - 2) {
+  console.log("Prime");
+}
 
 // your code here
 
@@ -966,9 +1015,14 @@ let primeN = 13;
 
 // Loop row 1..gridRows, inside it loop col 1..gridCols. Log row + " x " + col + " = " + (row * col).
 
-let gridRows = 3;
+let gridRows = 2;
 
-let gridCols = 3;
+let gridCols = 2;
+for (let i = 1; i <= gridRows; i += 1) {
+  for (let a = 1; a <= gridCols; a += 1) {
+    console.log(i + " x " + a + " = " + i * a);
+  }
+}
 
 // your code here
 
@@ -988,11 +1042,16 @@ let gridCols = 3;
 
 // Add up 1² + 2² + ... + sqSumMax² (i * i each turn). Log the total.
 
-let sqSumMax = 3;
+let sqSumMax = 5;
+let sumTo = 0;
+for (i = 1; i <= sqSumMax; i++) {
+  sumTo = sumTo + i * i;
+}
+console.log(sumTo);
 
 // your code here
 
-// TEST 1:  sqSumMax = 3  ->  14    (1 + 4 + 9)
+// TEST 1:  sqSumMax = 3  ->  14    (1 + 4 + 9) => 1 *1 =1 + 2*2 =4 + 3*3 = 9
 
 // TEST 2:  sqSumMax = 1  ->  1
 
@@ -1003,7 +1062,13 @@ let sqSumMax = 3;
 // Add every ODD number from 1 to oddSumMax. Log the total.
 
 let oddSumMax = 10;
-
+let oddTotal = 0;
+for (let i = 1; i <= oddSumMax; i++) {
+  if (i % 2 != 0) {
+    oddTotal += i;
+  }
+}
+console.log(oddTotal);
 // your code here
 
 // TEST 1:  oddSumMax = 10  ->  25   (1 + 3 + 5 + 7 + 9)
@@ -1016,7 +1081,13 @@ let oddSumMax = 10;
 
 // Log the first 5 multiples of multBase, one per line (multBase x 1 .. x 5).
 
-let multBase = 3;
+let multBase = 10;
+let multNum = 5;
+let multTotal = 0;
+for (let i = 1; i <= multNum; i++) {
+  multTotal = multBase * i;
+  console.log(multTotal);
+}
 
 // your code here
 
@@ -1032,7 +1103,14 @@ let multBase = 3;
 
 // Hint: a letter is uppercase when upWord[i] === upWord[i].toUpperCase() (and it is a letter).
 
-let upWord = "HeLLo";
+let upWord = "hellooo";
+let upWordCount = 0;
+for (let i = 0; i < upWord.length; i++) {
+  if (upWord[i] === upWord[i].toUpperCase()) {
+    upWordCount++;
+  }
+}
+console.log(upWordCount);
 
 // your code here
 
@@ -1048,10 +1126,13 @@ let upWord = "HeLLo";
 
 // Hint: result = ""; loop repTimes -> result = result + repWord.
 
-let repWord = "ab";
-
-let repTimes = 3;
-
+let repWord = "hello";
+let repTimes = 2;
+resultP = "";
+for (let i = 1; i < repWord.length; i++) {
+  resultP = resultP + repWord;
+}
+console.log(resultP);
 // your code here
 
 // TEST 1:  repWord = "ab", repTimes = 3  ->  ababab
