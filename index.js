@@ -1225,7 +1225,7 @@ console.log(average);
 
 // Hint: peel digits with % 10 and Math.floor(/10); a digit d is even when d % 2 === 0.
 
-let evenDigCountN = 2468;
+let evenDigCountN = 1234;
 evenDigTotal = 0;
 while (evenDigCountN > 0) {
   digit = evenDigCountN % 10;
@@ -1235,22 +1235,11 @@ while (evenDigCountN > 0) {
   }
 }
 console.log(evenDigTotal);
-
 // your code here
 
 // TEST 1:  evenDigCountN = 2468  ->  4
 
 // TEST 2:  evenDigCountN = 1357  ->  0
-evenDigCountN = 1357;
-evenDigTotal = 0;
-while (evenDigCountN > 0) {
-  digit = evenDigCountN % 10;
-  evenDigCountN = Math.floor(evenDigCountN / 10);
-  if (digit % 2 === 0) {
-    evenDigTotal++;
-  }
-}
-console.log(evenDigTotal);
 
 // TEST 3:  evenDigCountN = 1234  ->  2   (2 and 4)
 
@@ -1261,6 +1250,14 @@ console.log(evenDigTotal);
 // (just the digits joined) and log one line per row.
 
 let numTriRows = 3;
+
+for (let r = 1; r <= numTriRows; r++) {
+  let result = "";
+  for (let i = 1; i <= r; i++) {
+    result += 1;
+  }
+}
+console.log(result);
 
 // your code here
 
@@ -2180,8 +2177,18 @@ console.log(quadruple(5));
 // Write `sumOfSquares(n)` that RETURNS square(1) + square(2) + ... + square(n).
 // Call your `square` from exercise 5 inside the loop.
 // your code here
+function sumOfSquares(n) {
+  let square = 0;
+  for (i = 1; i <= n; i++) {
+    console.log(i, "i");
+    square += i * i;
+    console.log(square, "squaresquare");
+  }
 
-// console.log(sumOfSquares(3));
+  return square;
+}
+console.log(sumOfSquares(3));
+
 // TEST 1:  sumOfSquares(3)  ->  14    (1 + 4 + 9)
 // TEST 2:  sumOfSquares(1)  ->  1
 // TEST 3:  sumOfSquares(5)  ->  55    (1 + 4 + 9 + 16 + 25)
@@ -2190,8 +2197,17 @@ console.log(quadruple(5));
 // Write `bothEven(a, b)` that RETURNS true only if a AND b are both even.
 // Call your `isEven` from exercise 6.
 // your code here
-
-// console.log(bothEven(4, 8));
+function bothEven(a, b) {
+  return isEven(a) && isEven(b);
+  // if (a % 2 === 0 && b % 2 === 0) return true;
+  // else {
+  //   return false;
+  // }
+}
+console.log("----23------");
+console.log(bothEven(4, 8));
+console.log(bothEven(4, 7));
+console.log(bothEven(3, 9));
 // TEST 1:  bothEven(4, 8)  ->  true
 // TEST 2:  bothEven(4, 7)  ->  false
 // TEST 3:  bothEven(3, 9)  ->  false
@@ -2206,8 +2222,17 @@ console.log(quadruple(5));
 // Write `sumDigits(n)` that RETURNS the sum of the digits of a non-negative integer.
 // Hint: while n > 0 -> add (n % 10) to a total, then n = Math.floor(n / 10).
 // your code here
-
-// console.log(sumDigits(4825));
+function sumDigits(n) {
+  let totalSumDigits = 0;
+  while (n > 0) {
+    totalSumDigits += n % 10;
+    n = Math.floor(n / 10);
+  }
+  return totalSumDigits;
+}
+console.log(sumDigits(4825));
+console.log(sumDigits(60));
+console.log(sumDigits(7));
 // EXAMPLE 1:  sumDigits(4825)  ->  19     (4 + 8 + 2 + 5)
 // EXAMPLE 2:  sumDigits(60)    ->  6      (6 + 0)
 // EXAMPLE 3:  sumDigits(7)     ->  7
@@ -2217,8 +2242,19 @@ console.log(quadruple(5));
 // Hint: result = 1; loop `exp` times -> result = result * base.  (Do NOT use ** or Math.pow.)
 // Note: power(anything, 0) is 1.
 // your code here
-
-// console.log(power(2, 5));
+function power(base, exp) {
+  let result = 1;
+  for (let i = 1; i <= exp; i++) {
+    result = result * base;
+    console.log(result);
+  }
+  {
+    return result;
+  }
+}
+console.log(power(2, 5));
+console.log(power(5, 0));
+console.log(power(3, 3));
 // EXAMPLE 1:  power(2, 5)  ->  32    (2×2×2×2×2)
 // EXAMPLE 2:  power(5, 0)  ->  1     (anything to the 0 is 1)
 // EXAMPLE 3:  power(3, 3)  ->  27
@@ -2229,8 +2265,24 @@ console.log(quadruple(5));
 // tracking BOTH a running max and a running min.
 // Hint: start hi = 0, lo = 9; for each digit d -> if (d > hi) hi = d; if (d < lo) lo = d.
 // your code here
-
-// console.log(digitSpread(364));
+function digitSpread(n) {
+  let hi = 0;
+  let lo = 9;
+  while (n > 0) {
+    let d = n % 10;
+    if (d > hi) {
+      hi = d;
+    }
+    if (d < lo) {
+      lo = d;
+    }
+    n = Math.floor(n / 10);
+  }
+  return hi - lo;
+}
+console.log(digitSpread(364));
+console.log(digitSpread(70));
+console.log(digitSpread(5));
 // EXAMPLE 1:  digitSpread(364)  ->  3    (max 6, min 3)
 // EXAMPLE 2:  digitSpread(70)   ->  7    (max 7, min 0)
 // EXAMPLE 3:  digitSpread(5)    ->  0    (one digit: max == min)
@@ -2239,8 +2291,17 @@ console.log(quadruple(5));
 // Write `reverseNumber(n)` that RETURNS a positive integer's digits reversed.
 // Hint: result = 0; while n > 0 -> result = result * 10 + (n % 10), n = Math.floor(n/10).
 // your code here
-
-// console.log(reverseNumber(4071));
+function reverseNumber(n) {
+  result = 0;
+  while (n > 0) {
+    result = result * 10 + (n % 10);
+    n = Math.floor(n / 10);
+  }
+  return result;
+}
+console.log(reverseNumber(4071));
+console.log(reverseNumber(90));
+console.log(reverseNumber(6));
 // EXAMPLE 1:  reverseNumber(4071)  ->  1704
 // EXAMPLE 2:  reverseNumber(90)    ->  9     (09, leading zero drops)
 // EXAMPLE 3:  reverseNumber(6)     ->  6
@@ -2250,8 +2311,20 @@ console.log(quadruple(5));
 // (so 1, base, base*base, ...), else false. base is >= 2.
 // Hint: while n % base === 0 -> n = n / base; it is a power of base if you end at exactly 1.
 // your code here
+function isPowerOf(n, base) {
+  while (n % base === 0) {
+    n = n / base;
+  }
 
-// console.log(isPowerOf(27, 3));
+  if (n === 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isPowerOf(27, 3));
+console.log(isPowerOf(1, 5));
+console.log(isPowerOf(12, 2));
 // EXAMPLE 1:  isPowerOf(27, 3)  ->  true    (3×3×3)
 // EXAMPLE 2:  isPowerOf(1, 5)   ->  true    (base^0 = 1)
 // EXAMPLE 3:  isPowerOf(12, 2)  ->  false   (12 = 2×2×3, the 3 ruins it)
@@ -2261,8 +2334,19 @@ console.log(quadruple(5));
 // Same peeling as bit-counting, but instead of counting the 1s you PREPEND each bit.
 // Hint: result = ""; while n > 0 -> result = (n % 2) + result, then n = Math.floor(n / 2).
 // your code here
+function toBinary(n) {
+  result = "";
+  while (n > 0) {
+    n % 2;
 
-// console.log(toBinary(11));
+    result = (n % 2) + result;
+    n = Math.floor(n / 2);
+  }
+  return result;
+}
+console.log(toBinary(11));
+console.log(toBinary(8));
+console.log(toBinary(10));
 // EXAMPLE 1:  toBinary(11)  ->  "1011"
 // EXAMPLE 2:  toBinary(8)   ->  "1000"
 // EXAMPLE 3:  toBinary(1)   ->  "1"
@@ -2271,8 +2355,18 @@ console.log(quadruple(5));
 // Write `mySqrt(n)` -> the integer part of the square root of a non-negative integer.
 // Hint: loop i = 1 upward while i * i <= n; the answer is the last i that fit.
 // your code here
-
-// console.log(mySqrt(26));
+function mySqrt(n) {
+  let i = 1;
+  result = 0;
+  while (i * i <= n) {
+    result = i;
+    i++;
+  }
+  return result;
+}
+console.log(mySqrt(26));
+console.log(mySqrt(49));
+console.log(mySqrt(1));
 // EXAMPLE 1:  mySqrt(26)  ->  5    (5²=25 ≤ 26, 6²=36 > 26)
 // EXAMPLE 2:  mySqrt(49)  ->  7
 // EXAMPLE 3:  mySqrt(2)   ->  1    (1²=1 ≤ 2, 2²=4 > 2)
@@ -2281,8 +2375,23 @@ console.log(quadruple(5));
 // Write `isPerfectSquare(n)` -> true if a positive integer is a perfect square, else false.
 // Hint: loop i = 1 upward; if i*i === n -> true; if i*i > n -> false, stop.
 // your code here
-
-// console.log(isPerfectSquare(81));
+function isPerfectSquare(n) {
+  let i = 1;
+  result = Boolean;
+  while (i * i <= n) {
+    i++;
+  }
+  i = i - 1;
+  if (i * i === n) {
+    return true;
+  } else {
+    return false;
+  }
+  return result;
+}
+console.log(isPerfectSquare(81));
+console.log(isPerfectSquare(50));
+console.log(isPerfectSquare(101));
 // EXAMPLE 1:  isPerfectSquare(81)   ->  true   (9×9)
 // EXAMPLE 2:  isPerfectSquare(50)   ->  false
 // EXAMPLE 3:  isPerfectSquare(100)  ->  true   (10×10)
@@ -2292,8 +2401,18 @@ console.log(quadruple(5));
 // (counting both 1 and n itself), for n >= 1.
 // Hint: count = 0; loop i = 1..n; if (n % i === 0) count++.
 // your code here
-
-// console.log(countDivisors(12));
+function countDivisors(n) {
+  count = 0;
+  for (i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countDivisors(12));
+console.log(countDivisors(7));
+console.log(countDivisors(1));
 // EXAMPLE 1:  countDivisors(12)  ->  6    (1, 2, 3, 4, 6, 12)
 // EXAMPLE 2:  countDivisors(7)   ->  2    (1, 7 — a prime has exactly 2)
 // EXAMPLE 3:  countDivisors(1)   ->  1    (just 1)
@@ -2302,7 +2421,18 @@ console.log(quadruple(5));
 // Write `collatzSteps(n)` -> how many steps a positive integer takes to reach 1.
 // Each step: even -> n / 2, odd -> 3 * n + 1. Count steps until n is exactly 1.
 // your code here
-
+// function collatzSteps(n) {
+//   let count = 0;
+//   while (n >= 1) {
+//     if (n % 2 === 0) {
+//       n = n / 2;
+//     } else {
+//       n = 3 * n + 1;
+//     }
+//     count++;
+//   }
+//   return count;
+// }
 // console.log(collatzSteps(6));
 // EXAMPLE 1:  collatzSteps(6)  ->  8    (6→3→10→5→16→8→4→2→1)
 // EXAMPLE 2:  collatzSteps(1)  ->  0    (already 1, no steps)
@@ -2312,8 +2442,22 @@ console.log(quadruple(5));
 // Write `fizzAt(i)` that RETURNS, for a single number i:
 //   "FizzBuzz" if divisible by 3 and 5, "Fizz" if by 3, "Buzz" if by 5, else String(i).
 // your code here
-
-// console.log(fizzAt(15));
+function fizzAt(i) {
+  result = "";
+  if (i % 3 === 0 && i % 5 === 0) {
+    result = "FizzBuzz";
+  } else if (i % 3 === 0) {
+    result = "Fizz";
+  } else if (i % 5 === 0) {
+    result = "Buzz";
+  } else {
+    ("i");
+  }
+  return result;
+}
+console.log(fizzAt(15));
+console.log(fizzAt(9));
+console.log(fizzAt(7));
 // EXAMPLE 1:  fizzAt(15)  ->  "FizzBuzz"
 // EXAMPLE 2:  fizzAt(9)   ->  "Fizz"
 // EXAMPLE 3:  fizzAt(7)   ->  "7"
@@ -2323,8 +2467,12 @@ console.log(quadruple(5));
 // Write `isHarshad(n)` and CALL sumDigits(n) from E1 — do NOT re-sum the digits here.
 // Hint: return n % sumDigits(n) === 0;
 // your code here
-
-// console.log(isHarshad(18));
+function isHarshad(n) {
+  return n % sumDigits(n) === 0;
+}
+console.log(isHarshad(18));
+console.log(isHarshad(11));
+console.log(isHarshad(21));
 // EXAMPLE 1:  isHarshad(18)  ->  true    (1+8=9, and 18 % 9 === 0)
 // EXAMPLE 2:  isHarshad(11)  ->  false   (1+1=2, and 11 % 2 !== 0)
 // EXAMPLE 3:  isHarshad(21)  ->  true    (2+1=3, and 21 % 3 === 0)
@@ -2334,8 +2482,12 @@ console.log(quadruple(5));
 // Do NOT re-derive the reverse here — CALL reverseNumber(n) from E4 and compare to n.
 // Hint: return reverseNumber(n) === n;
 // your code here
-
-// console.log(isPalindrome(1331));
+function isPalindrome(n) {
+  return reverseNumber(n) === n;
+}
+console.log(isPalindrome(1331));
+console.log(isPalindrome(1234));
+console.log(isPalindrome(8));
 // EXAMPLE 1:  isPalindrome(1331)  ->  true
 // EXAMPLE 2:  isPalindrome(1234)  ->  false
 // EXAMPLE 3:  isPalindrome(8)     ->  true
@@ -2345,8 +2497,19 @@ console.log(quadruple(5));
 // Hint (easy way): loop i from 1 up to the smaller of a and b; whenever i divides
 //   both a and b, remember it; the LAST such i is the answer.
 // your code here
-
-// console.log(gcd(12, 8));
+function gcd(a, b) {
+  let result = 1;
+  let smaller = Math.min(a, b);
+  for (let i = 1; i <= smaller; i++) {
+    if (a % i === 0 && b % i === 0) {
+      result = i;
+    }
+  }
+  return result;
+}
+console.log(gcd(12, 8));
+console.log(gcd(7, 5));
+console.log(gcd(9, 9));
 // EXAMPLE 1:  gcd(12, 8)   ->  4    (1,2,4 divide both; 4 is biggest)
 // EXAMPLE 2:  gcd(7, 5)    ->  1    (only 1 divides both)
 // EXAMPLE 3:  gcd(9, 9)    ->  9
@@ -2356,8 +2519,15 @@ console.log(quadruple(5));
 // Write `digitalRoot(n)` and CALL `sumDigits(n)` (from E1) inside a loop.
 // Hint: while n has more than one digit (n >= 10) -> n = sumDigits(n); return n.
 // your code here
-
-// console.log(digitalRoot(942));
+function digitalRoot(n) {
+  while (n >= 10) {
+    n = sumDigits(n);
+  }
+  return n;
+}
+console.log(digitalRoot(942));
+console.log(digitalRoot(38));
+console.log(digitalRoot(5));
 // EXAMPLE 1:  digitalRoot(942)  ->  6    (9+4+2=15, then 1+5=6)
 // EXAMPLE 2:  digitalRoot(38)   ->  2    (3+8=11, then 1+1=2)
 // EXAMPLE 3:  digitalRoot(5)    ->  5    (already one digit)
@@ -2370,8 +2540,19 @@ console.log(quadruple(5));
 // Write `countdown(n)` that RETURNS "n n-1 ... 1 Go!" as one string with single spaces.
 // You may use a loop OR call countdown(n-1) inside itself (recursion). Either is fine.
 // your code here
+function countdown(n) {
+  let result = "";
+  let i = n;
 
-// console.log(countdown(3));
+  while (i >= 1) {
+    result += i + " ";
+    i--;
+  }
+  return result + "Go!";
+}
+console.log(countdown(3));
+console.log(countdown(1));
+console.log(countdown(5));
 // TEST 1:  countdown(3)  ->  "3 2 1 Go!"
 // TEST 2:  countdown(1)  ->  "1 Go!"
 // TEST 3:  countdown(5)  ->  "5 4 3 2 1 Go!"
