@@ -1285,7 +1285,13 @@ console.log(result);
 
 // Hint: while sumDigN > 0 -> add (sumDigN % 10) to a total, then sumDigN = Math.floor(sumDigN / 10).
 
-let sumDigN = 234;
+let sumDigN = 99;
+let totalD = 0;
+while (sumDigN > 0) {
+  totalD += sumDigN % 10;
+  sumDigN = Math.floor(sumDigN / 10);
+}
+console.log(totalD);
 
 // your code here
 
@@ -1307,7 +1313,13 @@ let sumDigN = 234;
 
 // Hint: while countDigN > 0 -> count++ and countDigN = Math.floor(countDigN / 10).
 
-let countDigN = 7384;
+let countDigN = 73;
+let countDigitN = 0;
+while (countDigN > 0) {
+  countDigN = Math.floor(countDigN / 10);
+  countDigitN++;
+}
+console.log(countDigitN);
 
 // your code here
 
@@ -1354,6 +1366,12 @@ let prodSumN = 234;
 // then revPosN = Math.floor(revPosN / 10).
 
 let revPosN = 123;
+let revResult = 0;
+while (revPosN > 0) {
+  revResult = revResult * 10 + (revPosN % 10);
+  revPosN = Math.floor(revPosN / 10);
+}
+console.log(revResult);
 
 // your code here
 
@@ -1376,7 +1394,8 @@ let revPosN = 123;
 // Hint: biggest = 0; peel each digit with % 10; if a digit is bigger, update biggest.
 
 let maxDigN = 49072;
-
+let biggest = 0;
+for (let i = 0; i <= maxDigN; i++) {}
 // your code here
 
 // EXAMPLE 1:  Input: maxDigN = 49072   Output: 9
@@ -1397,7 +1416,11 @@ let maxDigN = 49072;
 
 // Hint: while powTwoN % 2 === 0 -> powTwoN = powTwoN / 2; it is a power of 2 if it ends at exactly 1.
 
-let powTwoN = 16;
+// let powTwoN = 16;
+// let result = true;
+// while (powTwoN % 2 === 0) {
+//   powTwoN = powTwoN / 2;
+// }
 
 // your code here
 
@@ -1420,6 +1443,12 @@ let powTwoN = 16;
 // Hint: while oneBitsN > 0 -> add (oneBitsN % 2) to a count, then Math.floor(/2).
 
 let oneBitsN = 11;
+let countOneBitsN = 0;
+while (oneBitsN > 0) {
+  countOneBitsN += oneBitsN % 2;
+  oneBitsN = Math.floor(oneBitsN / 2);
+}
+console.log(countOneBitsN);
 
 // your code here
 
@@ -1442,6 +1471,13 @@ let oneBitsN = 11;
 // Hint: loop i = 1 upward while i * i <= rootFloorN; the answer is the last i that fit.
 
 let rootFloorN = 8;
+let bb = 1;
+let answer = 0;
+while (bb * bb <= rootFloorN) {
+  answer += bb;
+  bb++;
+}
+console.log("output: " + (answer - 1));
 
 // your code here
 
@@ -1463,7 +1499,14 @@ let rootFloorN = 8;
 
 // Hint: loop i = 1 upward; if i * i === perfSqN -> true; if i * i > perfSqN -> false, stop.
 
-let perfSqN = 16;
+let perfSqN = 15;
+let isperfsqr = false;
+for (i = 1; i * i <= perfSqN; i++) {
+  if (i * i === perfSqN) {
+    isperfsqr = true;
+  }
+}
+console.log(isperfsqr);
 
 // your code here
 
@@ -1488,6 +1531,23 @@ let perfSqN = 16;
 // Hint: while divisible by 2 -> /2, then by 3, then by 5; ugly if you end at exactly 1.
 
 let uglyN = 6;
+let isUgly = false;
+if (uglyN > 0) {
+  while (uglyN % 2 === 0) {
+    uglyN /= 2;
+  }
+
+  while (uglyN % 3 === 0) {
+    uglyN /= 3;
+  }
+
+  while (uglyN % 5 === 0) {
+    uglyN /= 5;
+  }
+
+  isUgly = uglyN === 1;
+}
+console.log(isUgly, "ttttt");
 
 // your code here
 
@@ -1508,6 +1568,16 @@ let uglyN = 6;
 // While stepsN > 0: if even -> stepsN = stepsN / 2, else -> stepsN -= 1. Count steps to reach 0.
 
 let stepsN = 14;
+let countsSepsN = 0;
+while (stepsN > 0) {
+  if (stepsN % 2 === 0) {
+    stepsN = stepsN / 2;
+    countsSepsN++;
+  } else {
+    stepsN -= 1;
+  }
+}
+console.log(countsSepsN, "??????");
 
 // your code here
 
