@@ -3183,13 +3183,21 @@ console.log(copyObject({ a: 1, b: 2 }).a);
 // Write `omitField(obj, key)` that RETURNS a NEW object with that key removed, leaving
 // the original untouched. (Contrast removeField in ex 6, which mutates.)
 // Hint: copyObject first, then delete the key from the copy.
+let copyObjectt = "";
 function omitField(obj, key) {
-  let copyObject = "";
+  delete obj[key];
+  return obj;
 }
 
 console.log(omitField({ a: 1, b: 2 }, "a"));
 // TEST 1:  omitField({ a: 1, b: 2 }, "a")                  ->  { b: 2 }
 // TEST 2:  const o = { a: 1, b: 2 }; omitField(o, "a"); "a" in o   ->  true   (original kept)
+function omitField(obj, key) {
+  delete obj[key];
+  return obj;
+}
+
+console.log(omitField({ a: 1 }, "a"));
 // TEST 3:  omitField({ a: 1 }, "a")                        ->  {}
 
 /* ============================================================
@@ -3203,11 +3211,26 @@ console.log(omitField({ a: 1, b: 2 }, "a"));
 // Write `firstUniqueChar(word)` -> the FIRST character that appears exactly once.
 // If none, RETURN "". Hint: count every char into an object, then walk the word again
 // and return the first char whose count is 1.
-// your code here
 
-// console.log(firstUniqueChar("leetcode"));
+function firstUniqueChar(word) {
+  for (const char of word) {
+    if (word.indexOf(char) === word.lastIndexOf(char)) {
+      return char;
+    }
+  }
+}
+console.log(firstUniqueChar("leetcode"));
 // EXAMPLE 1:  firstUniqueChar("leetcode")  ->  "l"
 // EXAMPLE 2:  firstUniqueChar("swiss")     ->  "w"
+function firstUniqueChar(word) {
+  for (const char of word) {
+    if (word.indexOf(char) === word.lastIndexOf(char)) {
+      return char;
+    }
+  }
+  return null;
+}
+console.log(firstUniqueChar("aabb"));
 // EXAMPLE 3:  firstUniqueChar("aabb")      ->  ""    (every char repeats)
 
 // ----- 26. Valid Anagram  (LeetCode 242) -----
